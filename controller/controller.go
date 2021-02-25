@@ -1,6 +1,7 @@
 package controller
 
 import (
+	log "gobase/global/variables"
 	"gobase/models"
 	"net/http"
 
@@ -38,6 +39,7 @@ func GetTodoList(c *gin.Context) {
 
 func GetTodoById(c *gin.Context) {
 	id, ok := c.Params.Get("id")
+	log.ZapLog.Sugar().Infof("GetTodoById：%s\n", id)
 	if !ok {
 		c.JSON(http.StatusOK, gin.H{"error": "无效的id"})
 		return

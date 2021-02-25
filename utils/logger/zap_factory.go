@@ -55,7 +55,7 @@ func CreateZapFactory(entry func(zapcore.Entry) error) *zap.Logger {
 	}
 
 	//写入器
-	fileName := variables.ConfigYml.GetString("Logs.GoSkeletonLogName")
+	fileName := variables.ConfigYml.GetString("Logs.GoLogName")
 	lumberJackLogger := &lumberjack.Logger{
 		Filename:   fileName,                                      //日志文件的位置
 		MaxSize:    variables.ConfigYml.GetInt("Logs.MaxSize"),    //在进行切割之前，日志文件的最大大小（以MB为单位）
