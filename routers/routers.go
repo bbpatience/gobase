@@ -1,13 +1,13 @@
 package routers
 
 import (
-	"bubble/controller"
-	"bubble/setting"
 	"github.com/gin-gonic/gin"
+	"gobase/controller"
+	"gobase/global/variables"
 )
 
 func SetupRouter() *gin.Engine {
-	if setting.Conf.Release {
+	if !variables.ConfigYml.GetBool("AppDebug") {
 		gin.SetMode(gin.ReleaseMode)
 	}
 	r := gin.Default()

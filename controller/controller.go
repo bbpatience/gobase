@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"bubble/models"
+	"gobase/models"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
