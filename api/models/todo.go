@@ -1,6 +1,7 @@
 package models
 
 import (
+	"gobase/global/my_errors"
 	"gobase/global/variables"
 )
 
@@ -29,7 +30,9 @@ func GetAllTodo() (todoList []*Todo, err error) {
 
 func GetATodo(id string) (todo *Todo, err error) {
 	todo = new(Todo)
-	if err = variables.GormDbMysql.Where("id=?", id).First(todo).Error; err != nil {
+	variables.GormDbMysql.Where("id=?", id).First(todo)
+	if  todo.ID <= 0 {
+		err = &my_errors.MyError{ErrorString: "id invalid."}
 		return nil, err
 	}
 	return
@@ -41,6 +44,9 @@ func UpdateATodo(todo *Todo) (err error) {
 }
 
 func DeleteATodo(id string) (err error) {
-	err = variables.GormDbMysql.Where("id=?", id).Delete(&Todo{}).Error
+	affectRows := variables.GormDbMysql.Debug().Where("id=?", id).Delete(&Todo{}).RowsAffected
+	if affectRows <= 0 {
+		err = &my_errors.MyError{ErrorString: "id invalid."}
+	}
 	return
 }

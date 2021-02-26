@@ -6,3 +6,11 @@ const (
 	ErrorsConfigInitFail            string = "config initial failed"
 	ErrorsGormInitFail              string = "Gorm initial failed"
 )
+
+type MyError struct {
+	ErrorString string
+}
+
+func (e *MyError) Error()  string{
+	return e.ErrorString
+}
