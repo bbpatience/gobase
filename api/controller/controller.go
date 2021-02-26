@@ -1,8 +1,8 @@
 package controller
 
 import (
+	"gobase/api/models"
 	log "gobase/global/variables"
-	"gobase/models"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

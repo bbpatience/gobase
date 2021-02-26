@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"gobase/controller"
+	"gobase/api/controller"
 	"gobase/global/variables"
 )
 

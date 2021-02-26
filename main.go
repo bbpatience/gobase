@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"gobase/api/routers"
 	_ "gobase/bootstrap"
 	"gobase/global/variables"
-	"gobase/routers"
 )
 
 func main() {
