@@ -3,6 +3,7 @@ package routers
 import (
 	"github.com/gin-gonic/gin"
 	"gobase/api/controller"
+	"gobase/api/middleware/authorization"
 	"gobase/api/middleware/cors"
 	"gobase/global/variables"
 )
@@ -20,6 +21,8 @@ func SetupRouter() *gin.Engine {
 
 	// v1
 	v1Group := r.Group("v1")
+	// use auth check.
+	v1Group.Use(authorization.CheckAuth())
 	{
 		// 待办事项
 		// 添加

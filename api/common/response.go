@@ -43,7 +43,7 @@ func Fail(c *gin.Context, dataCode int, msg string) {
 
 //权限校验失败
 func ErrorAuthFail(c *gin.Context) {
-	returnJson(c, http.StatusUnauthorized, consts.CommonAuthFailCode, consts.CommonAuthFailMsg, "")
+	returnJson(c, http.StatusUnauthorized, consts.CommonAuthFailCode, consts.CommonAuthFailMsg, nil)
 	//暂停执行
 	c.Abort()
 }
