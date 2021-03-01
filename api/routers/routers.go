@@ -3,6 +3,7 @@ package routers
 import (
 	"github.com/gin-gonic/gin"
 	"gobase/api/controller"
+	"gobase/api/middleware/cors"
 	"gobase/global/variables"
 )
 
@@ -11,6 +12,11 @@ func SetupRouter() *gin.Engine {
 		gin.SetMode(gin.ReleaseMode)
 	}
 	r := gin.Default()
+
+	//CORS
+	if variables.ConfigYml.GetBool("HttpServer.AllowCrossDomain") {
+		r.Use(cors.Next())
+	}
 
 	// v1
 	v1Group := r.Group("v1")
